@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Video from "./Video.js";
+import { useRef } from "react";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const videoRef = useRef();
+    console.log(videoRef.current);
+    const handlePlay = () => {
+        videoRef.current.play();
+    };
+    const handlePause = () => {
+        videoRef.current.pause();
+    };
+    return (
+        <div>
+            <Video ref={videoRef} />
+            <button onClick={handlePlay}>Play</button>
+            <button onClick={handlePause}>Pause</button>
+        </div>
+    );
 }
 
 export default App;
